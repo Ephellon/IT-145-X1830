@@ -30,6 +30,8 @@ as the shop grows
 
 ## Working Code (JavaScript)
 
+[View Online](https://htmlpreview.github.io/?https://github.com/Ephellon/IT-145-X1830/blob/b715d807ca771a82453cda3e97652155669fa088/Module%201/Pet%20BAG.html)
+
 ```javascript
 let Fees = {
     dog: {
