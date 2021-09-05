@@ -103,7 +103,7 @@ class Pet {
             weight = currentPet[`${ petType }Weight`];
 
         // Extra functionality...
-        let amountDue = Fees[petType].boarding(weight);
+        let amountDue = daysStay * Fees[petType].boarding(weight);
 
         if(grooming)
             amountDue += Fees[petType].grooming(weight);
