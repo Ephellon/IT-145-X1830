@@ -86,7 +86,7 @@ class Pet {
         switch(petType) {
             case 'dog':
             case 'cat': {
-                if(Pet[`${ petType }Spaces`] < 1)
+                if(Pet[`${ petType }Database`].size >= Pet[`${ petType }Spaces`])
                     throw `Unable to accommodate any more ${ petType }s at this time`;
             } break Check_for_boarding_space;
 
@@ -132,7 +132,7 @@ class Pet {
 
         // 6. Assign the pet to a space...
             // The `spaceID` can use an array to move pets between different spaces...
-        let spaceID = (database.size + 1),
+        let spaceID = database.size,
             weight = currentPet[`${ petType }Weight`];
 
         // Extra functionality...
@@ -156,8 +156,6 @@ class Pet {
             grooming,
             [`${ [petType] }SpaceNumber`]: spaceID,
         });
-
-        --Pet[`${ petType }Spaces`];
 
         return currentPet;
     }
