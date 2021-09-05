@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pet BAG</title>
+        <style media="screen">
+            :root {
+                background-color: #111;
+                color: #fff;
+
+                font-family: cursive;
+            }
+
+            table {
+                background-color: #222;
+                border: 0;
+
+                font-family: monospace;
+                text-align: left;
+            }
+
+            th, td {
+                min-width: 5rem;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #8888;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pet BAG</h1>
+
+        <!-- A simple example of Pet BAG -->
+        <table>
+            <thead>All pets</thead>
+            <tbody id="all-pets">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Space ID</th>
+                    <th>Age (years)</th>
+                    <th>Weight (pounds)</th>
+                    <th>Duration (days)</th>
+                    <th>Groomed</th>
+                    <th>Price (USD)</th>
+                </tr>
+            </tbody>
+        </table>
+
+        <button id="add-dog">Add Dog</button>
+        <button id="add-cat">Add Cat</button>
+
+        <!-- Load the script -->
+        <script type="text/javascript" src="index.js"></script>
+
+        <script type="text/javascript">
+            Pet.dogDatabase.set('Sommer', {
+                petType: 'dog',
+                petName: 'Sommer',
+                petAge: 4,
+                dogWeight: 15,
+                daysStay: 5,
+                grooming: true,
+                dogSpaceNumber: 1,
+            });
+
+            Pet.dogDatabase.set('Fujiwara', {
+                petType: 'dog',
+                petName: 'Fujiwara',
+                petAge: 2,
+                dogWeight: 30,
+                daysStay: 5,
+                grooming: true,
+                dogSpaceNumber: 2,
+            });
+
+            Pet.catDatabase.set('Devlin', {
+                petType: 'cat',
+                petName: 'Devlin',
+                petAge: 8,
+                catWeight: 30,
+                daysStay: 3,
+                grooming: false,
+                catSpaceNumber: 1,
+            });
+
+            let $ = (selector, container = document) => [...container.querySelectorAll(selector)];
+
+            function addPet(pet) {
+                // Add the pet to the table
+                let [tbody] = $('#all-pets'),
+                    { petName, petType, dogSpaceNumber, catSpaceNumber, petAge, dogWeight, catWeight, daysStay, grooming } = pet;
+
+                let amountDue = Fees[petType].boarding(dogWeight ?? catWeight);
+
+                if(grooming)
+                    amountDue += Fees[petType].grooming(dogWeight ?? catWeight);
+
+                let [previous] = $(`[id="${ petName }"i]`),
+                    html =
+                    `<tr id="${ petName }">
+                        <td>${ petName }</td>
+                        <td>${ petType }</td>
+                        <td>${ petType[0].toUpperCase() }-${ dogSpaceNumber ?? catSpaceNumber }</td>
+                        <td>${ petAge }</td>
+                        <td>${ dogWeight ?? catWeight }</td>
+                        <td>${ daysStay }</td>
+                        <td>${ grooming }</td>
+                        <td>${ amountDue.toFixed(2) }</td>
+                    </tr>`;
+
+                if(previous)
+                    previous.innerHTML = html;
+                else
+                    tbody.innerHTML += html;
+            }
+
+            $('button[id^="add"]')
+                .map(button => {
+                    button.addEventListener('mousedown', event => {
+                        let { currentTarget } = event,
+                            type = currentTarget.id.replace(/^add-/i, '');
+
+                        let pet = new Pet(type);
+
+                        if(!pet.petName?.length)
+                            return;
+
+                        addPet(pet);
+                    });
+                });
+
+            for(let [name, data] of Pet.catDatabase)
+                addPet(data);
+
+            for(let [name, data] of Pet.dogDatabase)
+                addPet(data);
+
+        </script>
+    </body>
+</html>
