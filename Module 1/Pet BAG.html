@@ -91,7 +91,7 @@
                 let [tbody] = $('#all-pets'),
                     { petName, petType, dogSpaceNumber, catSpaceNumber, petAge, dogWeight, catWeight, daysStay, grooming } = pet;
 
-                let amountDue = Fees[petType].boarding(dogWeight ?? catWeight);
+                let amountDue = daysStay * Fees[petType].boarding(dogWeight ?? catWeight);
 
                 if(grooming)
                     amountDue += Fees[petType].grooming(dogWeight ?? catWeight);
