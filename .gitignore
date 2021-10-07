@@ -1,0 +1,6 @@
+# Files to ignore
+#   /dir*/file.*
+#   !except.*
+#   /ZyBook/*
+
+*/ZyBook/
