@@ -251,7 +251,7 @@ public class Driver {
    public static void printAnimals(String outputType) {
       // Print the animal's name, status, acquisition country
       // and reserve status
-      System.out.println("Name\t\t| Status\t| Acq. Country\t| Reserved");
+      System.out.printf("%-8.15s\t| %-1.15s\t| %-1.15s\t| %s%n%n", "Name", "Status", "Acq. Country", "Reserved");
 
       switch(outputType) {
          case "dog":
@@ -261,7 +261,7 @@ public class Driver {
                String acquisitionCountry = dog.getAcquisitionLocation();
                boolean reserved = dog.getReserved();
 
-               System.out.println(name + "\t\t| " + status + "\t| " + acquisitionCountry + "\t| " + reserved);
+               System.out.printf("%-8.15s\t| %-1.15s\t| %-1.15s\t| %s%n", name, status, acquisitionCountry, reserved);
             }
             break;
 
@@ -272,7 +272,7 @@ public class Driver {
                String acquisitionCountry = monkey.getAcquisitionLocation();
                boolean reserved = monkey.getReserved();
 
-               System.out.println(name + "\t\t| " + status + "\t| " + acquisitionCountry + "\t| " + reserved);
+               System.out.printf("%-8.15s\t| %-1.15s\t| %-1.15s\t| %s%n", name, status, acquisitionCountry, reserved);
             }
             break;
 
@@ -288,7 +288,7 @@ public class Driver {
                if(!available)
                   continue;
 
-               System.out.println(name + " (dog)\t| " + status + "\t| " + acquisitionCountry + "\t| " + reserved);
+               System.out.printf("%-8.15s\t| %-1.15s\t| %-1.15s\t| %s%n", name, status, acquisitionCountry, reserved);
             }
 
             // Prints all non-reserved monkies
@@ -302,7 +302,7 @@ public class Driver {
                if(!available)
                   continue;
 
-               System.out.println(name + " (monkey)\t| " + status + "\t| " + acquisitionCountry + "\t| " + reserved);
+               System.out.printf("%-8.15s\t| %-1.15s\t| %-1.15s\t| %s%n", name, status, acquisitionCountry, reserved);
             }
             break;
 
