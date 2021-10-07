@@ -243,7 +243,7 @@ public class Driver {
                return;
             }
 
-      System.out.println("Unable to reserve a " + animalType + " at this time");
+      System.out.println("Unable to reserve a " + animalType + " from " + animalServiceCountry + " at this time");
    }
 
    // Prints a list of animals depending upon the `outputType`
