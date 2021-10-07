@@ -207,7 +207,7 @@ public class Pet {
       System.out.println("How long will " + name + " be staying (in whole days)? ");
       existingPet.setPetAge(stay = input.nextInt());
 
-      // Gromming options (if applicable)
+      // Grooming options (if applicable)
       if(type.equals("dog") && stay > 1) {
          System.out.println("Will " + name + " be groomed (Y/N)? ");
          boolean grooming = input.next().toLowerCase().charAt(0) == 'y';
@@ -221,7 +221,5 @@ public class Pet {
          --dogSpaces;
       if(type == "cat")
          --catSpaces;
-
-      return;
    }
 }
