@@ -63,6 +63,8 @@ let Fees = {
     },
 
     cat: {
+        // Returns the boarding fee for cats
+            // Fees.cat.boarding(weight:number?~Pounds) -> price:number~USD
         boarding(weight = null) {
             return 18;
         },
@@ -70,7 +72,7 @@ let Fees = {
 };
 
 // Creates a new Pet
-    // new Pet({ petType:string="dog"|"cat", petName:string?, petAge:number? })
+    // new Pet(petType:string="dog"|"cat")
 class Pet {
     // 2. The available spaces
     static dogSpaces = 30;
@@ -156,7 +158,7 @@ class Pet {
             ...currentPet,
             daysStay,
             grooming,
-            [`${ [petType] }SpaceNumber`]: spaceID,
+            [`${ petType }SpaceNumber`]: spaceID,
         });
 
         return currentPet;
